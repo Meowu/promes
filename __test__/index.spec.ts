@@ -3,6 +3,10 @@ import {States} from "../src/types";
 
 describe('The Promes constructor', () => {
 
+  it('should be a function', () => {
+    expect(typeof Promes === 'function').toBeTruthy()
+  })
+
   it('should throw if resolver is not a function', () => {
     expect(() => new Promes({})).toThrowError(new TypeError('resolver must be a function')
     )
