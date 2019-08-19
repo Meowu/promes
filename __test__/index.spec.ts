@@ -15,6 +15,17 @@ describe('The Promes constructor', () => {
     expect(p.state === 'pending').toBeTruthy()
   });
 
+  it('should define correct resolve and reject function with one parameter', () => {
+    let resolve: Function
+    let reject: Function
+    const p = new Promes((rs, rj) => {
+      resolve = rs
+      reject = rj
+    })
+    expect(Object.getOwnPropertyDescriptor(resolve, 'length').value).toBe(1)
+    expect(Object.getOwnPropertyDescriptor(reject!, 'length').value).toBe(1)
+  });
+
   it('should run asynchronous like Promise', () => {
     const p = new Promes(((resolve) => {
       resolve(5)
