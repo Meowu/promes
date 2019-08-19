@@ -24,4 +24,13 @@ describe('The Promes constructor', () => {
       expect(p.state).toBe(States.RESOLVED)
     })
   })
+
+  it('should catch', () => {
+    const p = new Promes(((_, reject) => {
+      reject(new Error('catch'))
+    }))
+    p.catch((e: Error) => {
+      expect(e.message).toBe('catch')
+    })
+  })
 });

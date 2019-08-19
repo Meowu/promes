@@ -61,6 +61,11 @@ class Promes<T> implements Thenable<T>, Inspection<T>{
     }))
   };
 
+  // catch was just a thenable without onfulfilled handler.
+  public catch<R>(onrejected: rejectHandler<R>) {
+    return this.then(null, onrejected)
+  }
+
   private executeHandlers = () => {
     if (this.state === States.PENDING) {
       return null;
@@ -77,7 +82,7 @@ class Promes<T> implements Thenable<T>, Inspection<T>{
   private attachHandlers = (handler: any) => {
     this.handlers = [this.handlers, handler];
     this.executeHandlers()
-  }
+  };
 
   private setResult = (value: T | any, state: States) => {
     const set = () => {
