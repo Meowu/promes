@@ -72,9 +72,10 @@ class Promes<T> implements Thenable<T>, Inspection<T>{
     }
     this.handlers.forEach((handler: Handler<T, any>) => {
       if (this.state === States.REJECTED) {
-        return handler.onrejected(this.value)
+        this.reason = this.value;
+        return handler.onrejected!(this.value)
       }
-      return handler.onfulfilled(this.value)
+      return handler.onfulfilled!(this.value)
     });
     this.handlers = []
   };
