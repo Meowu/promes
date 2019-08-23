@@ -1,4 +1,4 @@
-import { Promes } from '../src'
+import {Promes} from '../src'
 import {States} from "../src/types";
 
 describe('The Promes constructor', () => {
@@ -45,6 +45,7 @@ describe('The Promes constructor', () => {
       reject(new Error('catch'))
     }))
     p.catch((e: Error) => {
+      expect(p.state === States.REJECTED).toBeTruthy()
       expect(e.message).toBe('catch')
     })
   })
