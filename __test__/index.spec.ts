@@ -45,8 +45,13 @@ describe('The Promes constructor', () => {
       reject(new Error('catch'))
     }))
     p.catch((e: Error) => {
-      expect(p.state === States.REJECTED).toBeTruthy()
+      expect(p.state === States.REJECTED).toBeTruthy();
       expect(e.message).toBe('catch')
     })
+  })
+
+  it('should implement toString method', () => {
+    const p = new Promes(r => r(4));
+    expect(p.toString()).toBe('[object Promes]')
   })
 });

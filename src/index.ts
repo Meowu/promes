@@ -66,6 +66,10 @@ class Promes<T> implements Thenable<T>, Inspection<T>{
     return this.then(null, onrejected)
   }
 
+  public toString() {
+    return '[object Promes]'
+  }
+
   private executeHandlers = () => {
     if (this.state === States.PENDING) {
       return null;
