@@ -81,7 +81,7 @@ class Promes<T> implements Thenable<T>, Inspection<T>{
   };
 
   private attachHandlers = (handler: any) => {
-    this.handlers = [this.handlers, handler];
+    this.handlers = [...this.handlers, handler];
     this.executeHandlers()
   };
 
