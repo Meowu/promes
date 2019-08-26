@@ -55,3 +55,21 @@ describe('The Promes constructor', () => {
     expect(p.toString()).toBe('[object Promes]')
   })
 });
+
+describe('The Promes.resolve static method', () => {
+
+  it('should implement Promes.resolve', () => {
+    const val = Promes.hasOwnProperty('resolve')
+    expect(val).toBeTruthy();
+  })
+
+  it('should work as expected', () => {
+    const p = Promes.resolve(4)
+    expect(p.then).toBeDefined();
+    // console.log(p.state)  // should be pending?
+    p.then(value =>  {
+      expect(p.state === States.RESOLVED).toBeTruthy();
+      expect(value).toBe(4)
+    })
+  })
+})
