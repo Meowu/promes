@@ -72,6 +72,12 @@ class Promes<T> implements Thenable<T>, Inspection<T>{
     })
   }
 
+  public static reject<T>(reason: T | Thenable<T>) {
+    return new Promes((_, reject) => {
+      return reject(reason)
+    })
+  }
+
   public toString() {
     return '[object Promes]'
   }

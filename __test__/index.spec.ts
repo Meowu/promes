@@ -72,4 +72,22 @@ describe('The Promes.resolve static method', () => {
       expect(value).toBe(4)
     })
   })
+});
+
+describe('The Promes.reject static method', () => {
+  it('should implement Promes.reject', () => {
+    expect(Promes.hasOwnProperty('reject')).toBeTruthy();
+  })
+
+  it('should work properly', () => {
+    const mock = jest.fn();
+    const p = Promes.reject('5')
+    p.then((val: any) => {
+      mock()
+    })
+    p.catch(reason => {
+      expect(reason).toBe('5')
+    })
+    expect(mock.mock.calls.length).toBe(0)
+  })
 })
