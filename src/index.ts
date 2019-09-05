@@ -66,7 +66,8 @@ class Promes<T> implements Thenable<T>, Inspection<T>{
     return this.then(null, onrejected)
   }
 
-  public finally() {}
+  // 应该 catch callback
+  public finally(callback) {}
 
   public static resolve<T>(value: T | Thenable<T>) {
     return new Promes((resolve) => {
