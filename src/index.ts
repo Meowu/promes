@@ -67,7 +67,8 @@ class Promes<T> implements Thenable<T>, Inspection<T>{
   }
 
   // 应该 catch callback
-  public finally(callback) {}
+  public finally(callback: () => Promes<any> | void) {
+  }
 
   public static resolve<T>(value: T | Thenable<T>) {
     return new Promes((resolve) => {
